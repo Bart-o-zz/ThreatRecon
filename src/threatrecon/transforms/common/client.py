@@ -29,7 +29,8 @@ headers = {
     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:29.0) Gecko/20100101 Firefox/29.0'
 }
 
-api_key = 'c1c0732a6477e4ac185b05b049697199'
+#api_key needs to be moved to config[]
+api_key = 'your apikey'
 
 
 def string_filter(x):
