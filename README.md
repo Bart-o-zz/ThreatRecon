@@ -3,7 +3,7 @@ ThreatRecon
 
 Wapacklabs ThreatRecon transforms for Maltego
 
-## Installation instructions:
+## Installation
 
 Clone Repository
 
