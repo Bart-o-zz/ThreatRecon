@@ -111,6 +111,4 @@ if __name__ == "__main__":
     t = 'edm.flying100.net'
     #Print RootNodes
     for key, value in search(s, cache=False)[1].iteritems():
-        print "{}: {}".format(key, len(value))
-
-    print search('54.251.251.120', cache=False)
+        print "{}: Count:{}".format(key, len(value))
