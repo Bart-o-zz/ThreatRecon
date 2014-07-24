@@ -15,6 +15,11 @@ Import Configuration into Maltego
 
 Import Entity into Maltego
 
+Edit your API key in src/threatrecon/transforms/common/client.py line 33
+
+api_key = 'your apikey'
+
+
 Required Python modules : Requests and python-whois 
 
 Requests     : http://docs.python-requests.org/en/latest/
