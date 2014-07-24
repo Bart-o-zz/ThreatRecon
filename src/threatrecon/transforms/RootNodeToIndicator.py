@@ -61,8 +61,8 @@ def dotransform(request, response, config):
                 #response += e
             #IF Type is not domain, check if Rrname is not empty
             elif indicator['Rrname'] and indicator['Rrname'] != 'NA':
-                d = Domain("*{}".format(indicator['Rrname']))
-                d.fqdn = "*{}".format(indicator['Rrname'])
+                d = Domain(indicator['Rrname'])
+                d.fqdn = indicator['Rrname']
                 response += d
 
             if "ip" == indtype:
