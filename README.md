@@ -1,7 +1,7 @@
 ThreatRecon
 ===========
 
-Canari Threat Recon package for Maltego
+Wapacklabs ThreatRecon transforms for Maltego
 
 ## Installation instructions:
 
