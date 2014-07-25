@@ -3,6 +3,8 @@ ThreatRecon
 
 Wapacklabs [ThreatRecon](https://threatrecon.co) transforms for Maltego
 
+ThreatRecon example scripts : https://github.com/dechko/threatrecon
+
 # Installation
 
 Clone Repository
