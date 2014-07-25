@@ -41,87 +41,87 @@ def dotransform(request, response, config):
     cache, found = search(request.value)
 
     if found:
-        debug(found)
-        for indicator in found:
-            debug(indicator)
-            e = ''
-            indtype = indicator['Type'].lower().strip()
+        if list == type(found):
+            for indicator in found:
+                debug(indicator)
+                e = ''
+                indtype = indicator['Type'].lower().strip()
 
-            if "whois email" == indtype:
-                e = EmailAddress(indicator['Indicator'])
-                #response += e
+                if "whois email" == indtype:
+                    e = EmailAddress(indicator['Indicator'])
+                    #response += e
 
-            if "name server" == indtype:
-                e = NSRecord(indicator['Indicator'])
-                #response += e
+                if "name server" == indtype:
+                    e = NSRecord(indicator['Indicator'])
+                    #response += e
 
-            if "domain" == indtype:
-                e = Domain(indicator['Indicator'])
-                e.fqdn = indicator['Indicator']
-                #response += e
-            #IF Type is not domain, check if Rrname is not empty
-            elif indicator['Rrname'] and indicator['Rrname'] != 'NA':
-                d = Domain(indicator['Rrname'])
-                d.fqdn = indicator['Rrname']
-                response += d
+                if "domain" == indtype:
+                    e = Domain(indicator['Indicator'])
+                    e.fqdn = indicator['Indicator']
+                    #response += e
+                #IF Type is not domain, check if Rrname is not empty
+                elif indicator['Rrname'] and indicator['Rrname'] != 'NA':
+                    d = Domain(indicator['Rrname'])
+                    d.fqdn = indicator['Rrname']
+                    response += d
 
-            if "ip" == indtype:
-                e = IPv4Address(indicator['Indicator'])
-                #response += e
-            #IF Type is not IP, check if Rdata is not empty
-            elif indicator['Rdata']:
-                i = IPv4Address(indicator['Rdata'])
-                response += i
+                if "ip" == indtype:
+                    e = IPv4Address(indicator['Indicator'])
+                    #response += e
+                #IF Type is not IP, check if Rdata is not empty
+                elif indicator['Rdata']:
+                    i = IPv4Address(indicator['Rdata'])
+                    response += i
 
-            if "phone or fax no." == indtype:
-                e = PhoneNumber(indicator['Indicator'])
-                #response += e
+                if "phone or fax no." == indtype:
+                    e = PhoneNumber(indicator['Indicator'])
+                    #response += e
 
-            if "whois address component" == indtype:
-                e = Phrase(indicator['Indicator'])
-                #response += e
+                if "whois address component" == indtype:
+                    e = Phrase(indicator['Indicator'])
+                    #response += e
 
-            if "email" == indtype:
-                e = EmailAddress(indicator['Indicator'])
-                #response += e
+                if "email" == indtype:
+                    e = EmailAddress(indicator['Indicator'])
+                    #response += e
 
-            if "netname" == indtype:
-                e = NetNameThreatRecon(indicator['Indicator'])
-                #response += e
+                if "netname" == indtype:
+                    e = NetNameThreatRecon(indicator['Indicator'])
+                    #response += e
 
-            if "cidr" == indtype:
-                e = IPv4Address(indicator['Indicator'])
-                #response += e
+                if "cidr" == indtype:
+                    e = IPv4Address(indicator['Indicator'])
+                    #response += e
 
-            if "netrange" == indtype:
-                e = Netblock(indicator['Indicator'])
-                #response += e
+                if "netrange" == indtype:
+                    e = Netblock(indicator['Indicator'])
+                    #response += e
 
-            if indicator['Country']:
-                l = Location(indicator['Country'])
-                response += l
+                if indicator['Country']:
+                    l = Location(indicator['Country'])
+                    response += l
 
 
-            #Add Comments and details to own Entity
-            entity = e #request.entity
+                #Add Comments and details to own Entity
+                entity = e #request.entity
 
-            #Set comments
-            if indicator['Comment']:
-                entity.notes = string_filter(indicator['Comment'])
+                #Set comments
+                if indicator['Comment']:
+                    entity.notes = string_filter(indicator['Comment'])
 
-                #Set Details
-            for detail in tr_details:
-                if detail in indicator:
-                    if indicator[detail]:
-                        entity += Label(name=detail, value=string_filter(indicator[detail]))
+                    #Set Details
+                for detail in tr_details:
+                    if detail in indicator:
+                        if indicator[detail]:
+                            entity += Label(name=detail, value=string_filter(indicator[detail]))
 
-            #Set link color
-            if "Confidence" in indicator:
-                if indicator['Confidence'] >= 70:
-                    linkcolor = "0xff0000"
+                #Set link color
+                if "Confidence" in indicator:
+                    if indicator['Confidence'] >= 70:
+                        linkcolor = "0xff0000"
 
-            entity.linkcolor = linkcolor
+                entity.linkcolor = linkcolor
 
-            response += entity
+                response += entity
 
     return response
