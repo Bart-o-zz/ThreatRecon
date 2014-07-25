@@ -1,17 +1,14 @@
-ThreatRecon
+ThreatRecon 
 ===========
 
 Wapacklabs [ThreatRecon](https://threatrecon.co) transforms for Maltego
 
-
-
 # Installation
 
 Clone Repository
+`cd ThreatRecon/src`
 
-cd ThreatRecon/src
-
-canari create-profile threatrecon
+`canari create-profile threatrecon`
 
 Import Configuration into Maltego
 
@@ -22,10 +19,11 @@ Edit your API key in src/threatrecon/transforms/common/client.py line 33
 api_key = 'your apikey'
 
 
-Required Python modules : Requests and python-whois 
+### Required Python modules : 
 
-Requests     : http://docs.python-requests.org/en/latest/
-python-whois : https://code.google.com/p/pywhois/
+[Requests](http://docs.python-requests.org/en/latest/) 
+
+[python-whois](https://code.google.com/p/pywhois/) 
 
 
 # Known bugs
