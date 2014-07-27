@@ -36,22 +36,25 @@ def dotransform(request, response, config):
     if not error and found:
         if dict == type(found):
             for result, value in found.iteritems():
-                if set == type(value):
-                    if "whois_domains" == result:
-                        for d in value:
-                            e = Domain(d)
-                            e.fqdn = d
-                            response += e
+                    if set == type(value):
+                        if "whois_domains" == result:
+                            for d in value:
+                                if d:
+                                    e = Domain(d)
+                                    e.fqdn = d
+                                    response += e
 
-                    if "whois_emails" == result:
-                        for em in value:
-                            e = EmailAddress(em)
-                            response += e
+                        if "whois_emails" == result:
+                            for em in value:
+                                if em:
+                                    e = EmailAddress(em)
+                                    response += e
 
-                    if "whois_nameservers" == result:
-                        for w in value:
-                            e = NSRecord(w)
-                            response += e
+                        if "whois_nameservers" == result:
+                            for w in value:
+                                if w:
+                                    e = NSRecord(w)
+                                    response += e
 
     #Display error message in Transform Output
     response += UIMessage(error)
