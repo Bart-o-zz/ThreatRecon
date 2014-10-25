@@ -20,6 +20,19 @@ Edit your API key in src/threatrecon/transforms/common/client.py line 33
 
 api_key = 'your apikey'
 
+## Some Basics ##
+
+- it never hurts to have a working and updated Python 
+
+  On Kali start with: sudo apt-get update && sudo apt-get upgrade
+  install python-setuptools and python pip
+  ok - once you have done that update both
+  pip install pip --upgrade
+  pip install setuptools --upgrade
+  pip install requests
+  pip install python-whois
+
+
 
 ### Required Python modules : 
 
@@ -30,10 +43,6 @@ api_key = 'your apikey'
 
 # Known bugs
 
-We list all the bugs we know about (plus some things we know we need to add) at the Github issues page.
-
-Error : SSLError: [Errno 1] _ssl.c:504: error:1407742E:SSL routines:SSL23_GET_SERVER_HELLO:tlsv1 alert protocol version
-Solution : Install requests-sslv3 - https://github.com/joequery/requests-sslv3 
 
 # How you can help
 
